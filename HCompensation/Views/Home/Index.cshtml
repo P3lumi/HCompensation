@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-6 bg-success" style="height:100vh">
+        <div class="row d-flex flex-column align-content-around mx-auto my-auto">
+            <div class="col-6 align-self-start">
+                <img class="img-fluid mt-5" src="~/css/dpr logo.png" />
+            </div>
+            <div class="col-6 w-100 mt-5 m-0 p-0">
+                <h5 class="text-justify">Nigerian Midstream and Downstream Petroleum Regulatory Authority </h5>
+                <h4 class="text-justify">COMPENSATION PAGE </h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mx-auto my-auto">
+        <div class="row d-flex flex-column">
+            <div class="col-6">
+                <img class="img-fluid" src="~/css/oildrop.png" style="width: 100px" />  
+            </div>
+            <div class="col-6">
+                <a asp-action="carOwner" asp-controller="CarOwner" class="btn btn-success">Car Owner</a>
+                <a asp-action="fuelStation" asp-controller="FuelStation" class="btn btn-success">Fuel Station</a>
+            </div>
+        </div>
+    </div>
+</div>
