@@ -2,26 +2,39 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row">
-    <div class="col-md-6 bg-success" style="height:100vh">
-        <div class="row d-flex flex-column align-content-around mx-auto my-auto">
-            <div class="col-6 align-self-start">
-                <img class="img-fluid mt-5" src="~/css/dpr logo.png" />
+<div class="row" style="box-sizing:border-box">
+    <div class="col-md-6 bg-success" style="min-height:100vh;">
+        <div class="row">
+            <div class="mx-auto my-auto">
+                <img class="img-fluid mt-5 mx-auto" src="~/css/dpr logo.png" />
             </div>
-            <div class="col-6 w-100 mt-5 m-0 p-0">
-                <h5 class="text-justify">Nigerian Midstream and Downstream Petroleum Regulatory Authority </h5>
-                <h4 class="text-justify">COMPENSATION PAGE </h4>
+        </div>
+        <div class="row mt-5">
+            <div class="mx-auto my-auto container">
+                <h5 class="text-center text-white">Nigerian Midstream and Downstream Petroleum Regulatory Authority </h5>
+                <h4 class="text-center text-white mt-5">COMPENSATION PAGE </h4>
             </div>
         </div>
     </div>
-    <div class="col-md-6 mx-auto my-auto">
-        <div class="row d-flex flex-column">
-            <div class="col-6">
-                <img class="img-fluid" src="~/css/oildrop.png" style="width: 100px" />  
-            </div>
-            <div class="col-6">
-                <a asp-action="carOwner" asp-controller="CarOwner" class="btn btn-success">Car Owner</a>
-                <a asp-action="fuelStation" asp-controller="FuelStation" class="btn btn-success">Fuel Station</a>
+    <div class="col-md-6 mt-5">
+        <div class="row">
+            <div class="card mx-auto my-auto" style="width:90%;min-height:50%;">
+                <div class="card-body">
+                    <p class="card-text text-justify text-center">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Pharetra diam sit amet nisl suscipit adipiscing bibendum est ultricies. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo.
+                        Non sodales neque sodales ut etiam sit amet. Sagittis vitae et leo duis. Ut tristique et egestas quis ipsum suspendisse ultrices gravida.
+                        Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Lobortis feugiat vivamus at augue eget arcu dictum.
+                    </p>
+                    <div class="row w-75 mx-auto my-auto">
+                        <div class="col-lg-6 mb-1">
+                            <a asp-action="AddFuelStation" class="btn btn-success w-100" style="font-size:12px">Fuel Station</a>
+                        </div>
+                        <div class="col-lg-6 mb-1">
+                            <a asp-action="AddCarOwner" class="btn btn-success w-100" style="font-size:12px">Car Owner</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

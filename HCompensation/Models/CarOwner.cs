@@ -10,6 +10,8 @@ namespace HCompensation.Models
         public int Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
-        public string MyProperty { get; set; }
+        public string OwnershipUrl { get; set; }
+        public string PurchaseUrl { get; set; }
+
     }
 }

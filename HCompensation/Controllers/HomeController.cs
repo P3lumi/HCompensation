@@ -1,4 +1,5 @@
 ﻿using HCompensation.Models;
+using HCompensation.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -19,6 +20,28 @@ namespace HCompensation.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult AddFuelStation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddFuelStation(FillingStationVM model)
+        {
+            return View();
+        }
+
+        public IActionResult AddCarOwner()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddCarOwner(CarOwnerVM model)
         {
             return View();
         }
