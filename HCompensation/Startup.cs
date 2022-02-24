@@ -1,6 +1,11 @@
+using HCompensation.Data;
+using HCompensation.Models;
+using HCompensation.Service;
+using HCompensation.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +28,19 @@ namespace HCompensation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ICarOwnerService, CarOwnerService>();
+            services.AddScoped<ICarServiceRepo<CarOwner>, CarServiceRepo>();
+            services.AddScoped<IFuelStationService, FuelStationService>();
+            services.AddScoped<IFuelStationRepo<FuelStation>, FuelStationRepo>();
+            services.Configure<CloudinarySetting>(Configuration.GetSection("CloudinarySettings"));
+
             services.AddControllersWithViews();
+
+             var mapperConfig = new AutoMapper.MapperConfiguration(x => { x.AddProfile(new AutoMapperProfile()); });
+            services.AddSingleton(mapperConfig.CreateMapper());
+
+            services.AddDbContextPool<HCompensationContext>(option =>
+          option.UseSqlite(Configuration.GetConnectionString("Default")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

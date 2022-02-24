@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HCompensation.Models.ViewModels
 {
-    public class FillingStationVM
+    public class FuelStationVM
     {
         [Required, DisplayName("Business Name")]
         public string BusinessName { get; set; }
@@ -17,7 +17,7 @@ namespace HCompensation.Models.ViewModels
         [Required]
         public string Location { get; set; }
         [Required, DisplayName("Ticket")]
-        public IFormFile OwnerShipDocument { get; set; }
+        public IFormFile Ticket { get; set; }
         [Required, DisplayName("Additional Details")]
         public string LastSupplyDetails { get; set; }
     }

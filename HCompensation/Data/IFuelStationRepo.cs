@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace HCompensation.Data
 {
-    public class FuelStation
+    public interface IFuelStationRepo<T>
     {
-
+        Task<bool> Add(T entity);
+        Task<bool> SaveChanges();
     }
 }

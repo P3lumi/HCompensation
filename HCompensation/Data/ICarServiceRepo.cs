@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace HCompensation.Data
 {
-   public interface ICarServiceRepo
+   public interface ICarServiceRepo<T>
     {
-        Task<bool> Add (Task entity);
+        Task<bool> Add (T entity);
         Task<bool> SaveChanges();
     }
 }

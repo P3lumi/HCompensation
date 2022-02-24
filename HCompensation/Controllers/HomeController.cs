@@ -1,5 +1,6 @@
 ﻿using HCompensation.Models;
 using HCompensation.Models.ViewModels;
+using HCompensation.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,10 +14,14 @@ namespace HCompensation.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICarOwnerService _ownerService;
+        private readonly IFuelStationService _fuelService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICarOwnerService ownerService, IFuelStationService fuelService)
         {
             _logger = logger;
+            _ownerService = ownerService;
+            _fuelService = fuelService;
         }
 
         public IActionResult Index()
@@ -30,9 +35,19 @@ namespace HCompensation.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddFuelStation(FillingStationVM model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddFuelStation(FuelStationVM model)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var response = await _fuelService.AddFuelStation(model);
+            if (!response)
+            {
+                return View(model);
+            }
+            return RedirectToAction("Submit");
         }
 
         public IActionResult AddCarOwner()
@@ -41,7 +56,22 @@ namespace HCompensation.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCarOwner(CarOwnerVM model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddCarOwner(CarOwnerVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var response = await _ownerService.AddCarOwner(model);
+            if (!response)
+            {
+                return View(model);
+            }
+            return RedirectToAction("Submit");
+        }
+
+        public IActionResult Submit()
         {
             return View();
         }
